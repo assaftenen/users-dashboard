@@ -8,6 +8,7 @@ import { UserComponent } from './containers/user/user.component';
 // material stuffs
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+
 // routing
 import { AppRoutingModule } from './app-routing.module';
 // forms
@@ -24,6 +25,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
+
     ReactiveFormsModule,
     FormsModule
   ],

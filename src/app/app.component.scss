@@ -54,16 +54,3 @@ p {
     align-self: flex-end;
   }
 }
-.content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  & .user-form {
-    height: 80%;
-    width: 50%;
-    border-radius: 30px;
-    background-color: salmon;
-  }
-}

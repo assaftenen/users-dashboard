@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
-import { UsersDashboardComponent } from './users-dashboard/users-dashboard.component';
+//@ToDo-Assaf : should we use ChommonModule on v9?
+import { CommonModule } from '@angular/common';
+import { UsersListComponent } from './users-list.component';
+import { RouterModule } from '@angular/router';
+import { UserListRoutes } from './user-list.routes'
+
 @NgModule({
-  declarations: [UsersDashboardComponent],
+  declarations: [UsersListComponent],
   imports: [
+    RouterModule.forChild(UserListRoutes),
+    CommonModule
   ]
 })
 export class UsersListModule { }

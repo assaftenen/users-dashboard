@@ -5,9 +5,23 @@
   align-items: center;
   justify-content: center;
   & .user-form {
-    height: 80%;
+    padding-top: 15px;
+    height: 100%;
     width: 50%;
     border-radius: 30px;
-    background-color: rgb(221, 66, 113);
+    background-color: rgb(241, 193, 208);
   }
+}
+
+.example-form {
+  min-width: 150px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 80%;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
 }

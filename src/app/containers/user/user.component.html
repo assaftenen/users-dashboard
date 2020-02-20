@@ -1,5 +1,46 @@
 <div class="content">
     <div class="user-form">
-        <div>User Form come here</div>
+        <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Leonard" formControlName="name">
+                <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+                    {{ "name is required" }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Chohen" formControlName="lastName">
+                <mat-error *ngIf="!formGroup.controls['lastName'].valid && formGroup.controls['lastName'].touched">
+                    {{ "last Name is required" }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Ex. Pizza" formControlName="phone">
+                <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
+                    {{ "phone Name is required" }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Age</mat-label>
+                <input matInput placeholder="99" formControlName="age">
+                <mat-error *ngIf="!formGroup.controls['age'].valid && formGroup.controls['age'].touched">
+                    {{ "age Name is required" }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Ex. Pizza" formControlName="address">
+                <mat-error *ngIf="!formGroup.controls['address'].valid && formGroup.controls['address'].touched">
+                    {{ "address Name is required" }}
+                </mat-error>
+            </mat-form-field>
+            <div class="buttons">
+                <button mat-button type="submit" [disabled]="!formGroup.valid">Submit</button>
+                <button mat-button>Cancel</button>
+            </div>
+        </form>
     </div>
 </div>

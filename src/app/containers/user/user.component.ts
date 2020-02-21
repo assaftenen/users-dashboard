@@ -1,9 +1,15 @@
 import { AddUser } from './../../actions/users.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from "@angular/router";
+import { take } from 'rxjs/operators';
+import { IUser } from 'src/app/Interfaces/dahsboard.interfaces';
+
+
+
 
 
 
@@ -16,11 +22,31 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   formGroup: FormGroup;
+  userIdByUrl: string;
+  user: IUser
 
-  constructor(private fb: FormBuilder, private store: Store<AppState>, private router: Router) { }
+  constructor(private fb: FormBuilder, private store: Store<AppState>, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.createForm();
+    this.userIdByUrl = this.activeRoute.snapshot.paramMap.get("id")
+    if (this.userIdByUrl) {
+      this.store.select("users").pipe(take(1)).subscribe(result => {
+        debugger
+        this.user = result.usersList.find(user => user.phone === this.userIdByUrl)
+        if (this.user) {
+          this.updateFormFilds()
+        }
+
+      })
+    }
+  }
+  updateFormFilds() {
+    if (this.user) {
+      let { firstName, lastName, phone, age, address } = this.user
+      this.formGroup.patchValue({ firstName, lastName, phone, age, address })
+      debugger
+    }
   }
   createForm() {
     this.formGroup = this.fb.group({

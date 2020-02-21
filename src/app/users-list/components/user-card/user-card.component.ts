@@ -1,8 +1,10 @@
+import { Router } from '@angular/router';
 import { DeleteUser } from './../../../actions/users.actions';
 import { Store } from '@ngrx/store';
 import { IUser } from './../../../Interfaces/dahsboard.interfaces';
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { AppState } from 'src/app/reducers';
+
 
 
 
@@ -13,7 +15,7 @@ import { AppState } from 'src/app/reducers';
 })
 export class UserCardComponent implements OnInit {
   @Input() user: IUser
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,11 +26,10 @@ export class UserCardComponent implements OnInit {
   }
 
   onDeleteClicked() {
-    debugger
     this.store.dispatch(new DeleteUser({ user: this.user }));
   }
   onEditClicked() {
-    debugger
+    this.router.navigateByUrl(`/user/${this.user?.phone}`);
 
   }
 

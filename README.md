@@ -21,8 +21,6 @@
 * [x] App should be scallable as posible.
 * [x] Repository should be located at Github.
 
--- icon for delete
--- delete
 -- route components to edit
 -- edit
 -- phone directive 

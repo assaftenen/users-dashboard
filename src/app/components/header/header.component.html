@@ -1,12 +1,12 @@
 <div class="app-title">
     <div class="title-name">
-        Dashboard
-    </div>
-    <div class="title-page" routerLink="/">
-        <a mat-button routerLink="/">New</a>
+        Reali Dashboard
     </div>
     <div class="title-page" routerLink="users-list">
-        <a mat-button routerLink="/users-list">Dashboard</a>
+        <a [ngClass]="{disabled: count<1}" mat-button routerLink="/users-list">Dashboard</a>
+    </div>
+    <div class="title-page" routerLink="/user">
+        <a mat-button routerLinkActive="active" routerLink="/">New</a>
     </div>
 
 </div>

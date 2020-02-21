@@ -4,3 +4,34 @@
   flex-wrap: wrap;
   align-items: center;
 }
+@keyframes load {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.element-fade {
+  width: 100%;
+  height: 30px;
+  opacity: 0;
+  color: black;
+  animation-fill-mode: forwards;
+}
+h1 {
+  -webkit-animation: load 2s;
+  animation: load 2s;
+}
+h2 {
+  -webkit-animation: load 2s;
+  animation: load 2s;
+}
+h4 {
+  -webkit-animation: load 2s;
+  animation: load 2s;
+}
+h5 {
+  -webkit-animation: load 4s;
+  animation: load 4s;
+}

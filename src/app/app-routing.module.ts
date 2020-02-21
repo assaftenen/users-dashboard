@@ -5,8 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', component: UserComponent },
-  { path: 'users-list', loadChildren: () => import('./users-list/users-list.module').then(m => m.UsersListModule) }
+  { path: 'user', component: UserComponent },
+  { path: 'user/:id', component: UserComponent },
+  { path: 'users-list', loadChildren: () => import('./users-list/users-list.module').then(m => m.UsersListModule) },
+  { path: '', redirectTo: '/user', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

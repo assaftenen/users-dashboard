@@ -1,3 +1,17 @@
-<div class="cards-holder">
+<div class="test" *ngIf="(usersList$| async).length > 0;else notShow" class="cards-holder">
     <app-user-card [user]="user" *ngFor="let user of usersList$ | async"></app-user-card>
 </div>
+<ng-template #notShow>
+    <h1 class="element-fade">
+        Nothing here for you mista!
+    </h1>
+    <h2 class="element-fade">
+        Please add some users MISTA!
+    </h2>
+    <h4 class="element-fade">
+        And come back to Edit | Delete
+    </h4>
+    <h5 class="element-fade">
+        Dont feel Shy, we arnt fancy overhere:
+    </h5>
+</ng-template>

@@ -27,6 +27,17 @@ export interface AppState {
 }
 
 export const selectUsers = (state: AppState) => state.users.usersList;
+export const selectUsersCount = (state: AppState) => state.users.usersList.length;
+export const getClientState = createFeatureSelector<AppState>('usersList');
+const getUser = () =>
+  createSelector(
+    getClientState,
+    (state, props) => state.find(user => {
+      if (user.phone === props) {
+        return user
+      }
+    })
+  );
 
 
 

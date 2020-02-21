@@ -18,28 +18,28 @@
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Phone</mat-label>
-                <input matInput placeholder="Ex. Pizza" formControlName="phone">
+                <input matInput type="tel" placeholder="054-634-5886" formControlName="phone">
                 <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
                     {{ "phone Name is required" }}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Age</mat-label>
-                <input matInput placeholder="99" formControlName="age">
+                <input matInput placeholder="64" formControlName="age">
                 <mat-error *ngIf="!formGroup.controls['age'].valid && formGroup.controls['age'].touched">
                     {{ "age Name is required" }}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Address</mat-label>
-                <input matInput placeholder="Ex. Pizza" formControlName="address">
+                <input matInput placeholder="Maui, street of love" formControlName="address">
                 <mat-error *ngIf="!formGroup.controls['address'].valid && formGroup.controls['address'].touched">
                     {{ "address Name is required" }}
                 </mat-error>
             </mat-form-field>
             <div class="buttons">
                 <button mat-button type="submit" [disabled]="!formGroup.valid">Submit</button>
-                <button mat-button>Cancel</button>
+                <button mat-button (click)="resetForm($event)">Cancel</button>
             </div>
         </form>
     </div>

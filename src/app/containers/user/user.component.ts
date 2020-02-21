@@ -1,4 +1,4 @@
-import { AddUser } from './../../actions/users.actions';
+import { AddUser, UpdateUser } from './../../actions/users.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
@@ -7,12 +7,6 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import { take } from 'rxjs/operators';
 import { IUser } from 'src/app/Interfaces/dahsboard.interfaces';
-
-
-
-
-
-
 
 
 @Component({
@@ -29,38 +23,55 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.userIdByUrl = this.activeRoute.snapshot.paramMap.get("id")
+    this.userIdByUrl = this.activeRoute.snapshot.paramMap.get("id");
     if (this.userIdByUrl) {
-      this.store.select("users").pipe(take(1)).subscribe(result => {
-        debugger
-        this.user = result.usersList.find(user => user.phone === this.userIdByUrl)
-        if (this.user) {
-          this.updateFormFilds()
+      debugger
+      this.store.select("users").pipe(take(1)).subscribe(usersState => {
+        const suspectedUser = usersState.usersList.find(user => {
+          if (Number(user.userId) == Number(this.userIdByUrl)) {
+            return user
+          }
+        })
+        if (suspectedUser) {
+          this.user = suspectedUser
+          this.updateFormFilds(suspectedUser);
         }
+
+
+
 
       })
     }
   }
-  updateFormFilds() {
-    if (this.user) {
-      let { firstName, lastName, phone, age, address } = this.user
+
+  updateFormFilds(suspectedUser) {
+    if (suspectedUser) {
+      let { firstName, lastName, phone, age, address } = suspectedUser
       this.formGroup.patchValue({ firstName, lastName, phone, age, address })
-      debugger
     }
   }
+
   createForm() {
     this.formGroup = this.fb.group({
       'firstName': ['', [Validators.required]],
       'lastName': ['', [Validators.required]],
-      'phone': ['', [Validators.required]],
+      'phone': ['', [Validators.required, Validators.pattern("^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$")]],
       'age': ['', [Validators.required]],
       'address': ['', Validators.required]
     });
   }
   onSubmit(formInputs) {
-    this.store.dispatch(new AddUser({ user: formInputs }))
-    this.formGroup.reset();
+    debugger;
+    if (this.user?.userId) {
+      this.store.dispatch(new UpdateUser(({ user: { ...formInputs, userId: this.user.userId } })))
+    } else {
+      this.store.dispatch(new AddUser({ user: formInputs }))
+    }
     this.router.navigateByUrl('/users-list')
+  }
+  resetForm(event) {
+    event.preventDefault();
+    this.formGroup.reset();
   }
 
 

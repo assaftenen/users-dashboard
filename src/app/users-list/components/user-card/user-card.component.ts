@@ -1,11 +1,10 @@
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { IUser } from './../../../Interfaces/dahsboard.interfaces';
 import { Router } from '@angular/router';
+// store 
+import { AppState } from 'src/app/reducers';
 import { DeleteUser } from './../../../actions/users.actions';
 import { Store } from '@ngrx/store';
-import { IUser } from './../../../Interfaces/dahsboard.interfaces';
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
-import { AppState } from 'src/app/reducers';
-
-
 
 
 @Component({
@@ -21,16 +20,17 @@ export class UserCardComponent implements OnInit {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes?.user?.currentValue) {
-      this.user = { ...changes?.user?.currentValue }
+      this.user = { ...changes?.user?.currentValue };
     }
   }
 
   onDeleteClicked() {
     this.store.dispatch(new DeleteUser({ user: this.user }));
   }
-  onEditClicked() {
-    this.router.navigateByUrl(`/user/${this.user?.phone}`);
-
+  onEditClicked(id) {
+    const path = `/user/${String(id)}`
+    if (path) {
+      this.router.navigateByUrl(path);
+    }
   }
-
 }

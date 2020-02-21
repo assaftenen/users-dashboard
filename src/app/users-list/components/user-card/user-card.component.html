@@ -1,8 +1,10 @@
 <mat-card *ngIf="user">
     <mat-card-header>
-        <div>{{user.firstName + ' ' +user.lastName}}</div>
+        <div>
+            <h3>{{user.firstName + ' ' +user.lastName}}</h3>
+        </div>
         <div class="header-btn">
-            <button mat-button (click)="onEditClicked()">
+            <button mat-button (click)="onEditClicked(user.userId)">
                 <mat-icon>edit</mat-icon>
             </button>
             <button mat-button (click)="onDeleteClicked()">

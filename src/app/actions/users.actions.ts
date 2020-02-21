@@ -40,7 +40,7 @@ export class UpdateUser implements Action {
 export class UsersError implements Action {
   readonly type = UsersActionTypes.UsersError;
 
-  constructor(readonly payload: { error: string }) {
+  constructor(readonly payload: { user: IUser }) {
 
   }
 }

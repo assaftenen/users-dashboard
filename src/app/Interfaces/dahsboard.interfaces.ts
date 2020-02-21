@@ -4,4 +4,5 @@ export interface IUser {
     age: string;
     phone: string;
     address: string;
+    userId?: number
 }

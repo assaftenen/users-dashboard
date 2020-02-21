@@ -12,5 +12,9 @@
   }
   & .title-page {
     align-self: flex-end;
+    & a {
+      font-size: 1.1em;
+      font-weight: lighter;
+    }
   }
 }

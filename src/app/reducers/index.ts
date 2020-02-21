@@ -26,6 +26,10 @@ export interface AppState {
   users: UsersState;
 }
 
+export const selectUsers = (state: AppState) => state.users.usersList;
+
+
+
 
 export function usersReducer(state: UsersState = initialUsersState, action: UsersAction): UsersState {
   switch (action.type) {

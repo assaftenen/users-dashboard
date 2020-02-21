@@ -21,11 +21,21 @@
 * [x] App should be scallable as posible.
 * [x] Repository should be located at Github.
 
--- build user component and form - 2 hr
--- build users componet - 2 hours
--- implement ngrx adn effects - 2hours
+-- icon for delete
+-- delete
+-- route components to edit
+-- edit
+-- phone directive 
 -- material into separated module
+-- 
 -- shared Module
+-- effects
+
+## bonus to do
+
+save to localStorage 
+animation, 
+modal for delete
 
 after submitting => dispatch add user => add it to the store
 users reducer should include CRUD

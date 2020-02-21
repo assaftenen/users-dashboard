@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
   }
   createForm() {
     this.formGroup = this.fb.group({
-      'name': ['', [Validators.required]],
+      'firstName': ['', [Validators.required]],
       'lastName': ['', [Validators.required]],
       'phone': ['', [Validators.required]],
       'age': ['', [Validators.required]],

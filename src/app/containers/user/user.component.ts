@@ -1,5 +1,8 @@
+import { AddUser } from './../../actions/users.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
 
 
 
@@ -12,7 +15,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class UserComponent implements OnInit {
   formGroup: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -27,6 +30,7 @@ export class UserComponent implements OnInit {
     });
   }
   onSubmit(formInputs) {
+    this.store.dispatch(new AddUser({ user: formInputs }))
     debugger
   }
 

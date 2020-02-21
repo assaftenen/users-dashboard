@@ -13,6 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 // forms
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,16 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatButtonModule,
 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      }
+    }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UserComponent } from './containers/user/user.component';
 // material stuffs
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-
+import { MaterialModule } from './material/material.module';
 // routing
 import { AppRoutingModule } from './app-routing.module';
 // forms
@@ -17,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,12 +26,9 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-
+    MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

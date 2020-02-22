@@ -8,18 +8,14 @@ import { UserListRoutes } from './user-list.routes'
 // components
 import { UserCardComponent } from './components/user-card/user-card.component';
 // materials  modules
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [UsersListComponent, UserCardComponent],
   imports: [
     RouterModule.forChild(UserListRoutes),
     CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule
+    MaterialModule
   ]
 })
 export class UsersListModule { }

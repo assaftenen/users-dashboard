@@ -1,4 +1,5 @@
 <div class="content">
+    <h2>{{user?.userId? 'Update User Record': 'Submit A New User Record'}}</h2>
     <div class="user-form">
         <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
             <mat-form-field class="example-full-width">
@@ -20,14 +21,14 @@
                 <mat-label>Phone</mat-label>
                 <input matInput type="tel" placeholder="054-634-5886" formControlName="phone">
                 <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
-                    {{ "phone Name is required" }}
+                    {{ "phone Name is required at valid path e.g : 054-634-5886" }}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Age</mat-label>
-                <input matInput placeholder="64" formControlName="age">
+                <input type="number" matInput placeholder="64" formControlName="age">
                 <mat-error *ngIf="!formGroup.controls['age'].valid && formGroup.controls['age'].touched">
-                    {{ "age Name is required" }}
+                    {{ "age Name is required ! [18-75]" }}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -38,7 +39,8 @@
                 </mat-error>
             </mat-form-field>
             <div class="buttons">
-                <button mat-button type="submit" [disabled]="!formGroup.valid">Submit</button>
+                <button mat-button type="submit"
+                    [disabled]="!formGroup.valid">{{user?.userId? 'Update': 'Submit'}}</button>
                 <button mat-button (click)="resetForm($event)">Cancel</button>
             </div>
         </form>

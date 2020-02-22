@@ -21,7 +21,7 @@
 
 ### Scallability###
 
--- shared Module in additional to material module.
 -- State - for current app features there is only one state that filled the AppState ("users" slice, hold UsersState). For simplicity state composition (reducer folder under index file, actions under actions folder)  additionals future needed "State Slices" can easily be added at separated filed and to be import to index.
--- feature module structure is based on module folder. The General Approach is to manage containers (known as "smart")  and components (known as "dumb").
+-- feature module structure is based on module folder.
+-- shared Module in additional to material module (currently onGoing under assaf_module branch), this module will hold future shared services and providers.
 

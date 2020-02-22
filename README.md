@@ -1,8 +1,8 @@
-### Reali Users Records  Dashboard ###
+# Reali Users Records  Dashboard #
 
-## built with Angular V9 **
+### built with Angular V9 ###
 
-## App Scop ##
+### App Scop ###
 
 1. Layout is Grid and Flex based.
 2. user component - which is the main screen that hold the form for user registration. The form is full validate (required fields for all + phone Number (path : 123-456-7890) + age (18-75)).
@@ -29,13 +29,13 @@
 * [ongoing] App should be scallable as posible.
 * [done] Repository should be located at Github.
 
-## More to come ##
+### More to come ###
 
 -- shared Module
 -- effects
 -- try - catch
 
-## bonus to do
+### bonus to do###
 
 save to localStorage storage threw effects
 

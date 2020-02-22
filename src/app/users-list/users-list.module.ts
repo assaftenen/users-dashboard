@@ -1,3 +1,5 @@
+import { MaterialModule } from './../material/material.module';
+import { SharedModule } from './../shared/shared/shared.module';
 import { NgModule } from '@angular/core';
 //@ToDo-Assaf : should we use ChommonModule on v9?
 import { CommonModule } from '@angular/common';
@@ -7,15 +9,18 @@ import { RouterModule } from '@angular/router';
 import { UserListRoutes } from './user-list.routes'
 // components
 import { UserCardComponent } from './components/user-card/user-card.component';
+
 // materials  modules
-import { MaterialModule } from '../material/material.module';
+
 
 @NgModule({
   declarations: [UsersListComponent, UserCardComponent],
   imports: [
     RouterModule.forChild(UserListRoutes),
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule.forRoot()
+
   ]
 })
 export class UsersListModule { }
